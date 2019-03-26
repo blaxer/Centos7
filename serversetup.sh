@@ -34,7 +34,7 @@ systemctl start docker
 #Install docker compose
 sudo yum install epel-release -y
 sudo yum install -y python-pip 
-sudo pip install docker-compose -y
+sudo pip install docker-compose
 sudo yum upgrade python* -y
 
 #Install portainer
