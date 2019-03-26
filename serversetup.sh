@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-set -x
-trap read debug
+
 
 #This is a simple script used to setup centos7 VM's for testing
 
