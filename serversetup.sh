@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-#This is a simple setup script used for centos7 test VM's
+#This is a simple setup script used for centos7 test VM's - assumes running as root
 
 #install net tools
 yum install net-tools -y
@@ -16,13 +16,12 @@ systemctl stop firewalld
 systemctl disable firewalld
 
 #Kill selinux
-sudo sed -i 's/enforcing/disabled/g' /etc/selinux/config /etc/selinux/config
+sed -i 's/enforcing/disabled/g' /etc/selinux/config /etc/selinux/config
 
 #Setup automatic yum updates
 yum -y install yum-cron
 systemctl enable yum-cron.service
 systemctl start yum-cron.service
-
 
 #Install docker CE
 yum install -y yum-utils device-mapper-persistent-data lvm2
@@ -32,10 +31,11 @@ systemctl enable docker
 systemctl start docker
 
 #Install docker compose
-sudo yum install epel-release -y
-sudo yum install -y python-pip 
-sudo pip install docker-compose
-sudo yum upgrade python* -y
+yum install epel-release -y
+yum install -y python-pip 
+pip install --upgrade pip
+pip install docker-compose
+yum upgrade python* -y
 
 #Install portainer
 docker volume create portainer_data
