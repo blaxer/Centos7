@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-
 #This is a simple script used to setup centos7 VM's for testing
 
 #install net tools
