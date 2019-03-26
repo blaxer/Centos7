@@ -10,27 +10,7 @@ yum install net-tools -y
 # install delta rpm support
 yum install deltarpm -y
 
-#ask user for ip address
-echo ipv4 address?
-read new_ip_value
-
-# Configure static ip
-system-config-network-cmd -i <<EOF
-DeviceList.Ethernet.eth0.type=Ethernet
-DeviceList.Ethernet.eth0.BootProto=static
-DeviceList.Ethernet.eth0.OnBoot=True
-DeviceList.Ethernet.eth0.NMControlled=True
-DeviceList.Ethernet.eth0.Netmask=192.168.1.255
-DeviceList.Ethernet.eth0.IP=${new_ip_value}
-DeviceList.Ethernet.eth0.Gateway=192.168.1.1
-ProfileList.default.ActiveDevices.1=eth0
-EOF
-
-service network stop
-service network start
-
 #Set the timezone
-
 timedatectl set-timezone America/Los_Angeles
 
 #Kill the firewall
