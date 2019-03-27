@@ -3,9 +3,15 @@
 #This is a simple setup script used for centos7 test VM's - assumes running as root
 
 #install net tools
+echo "$(tput setaf 6)-----------------------------------------------------------------------------------"
+echo "$Install Net Tools"
+echo "$-----------------------------------------------------------------------------------(tput sgr 0)"
 yum install net-tools -y
 
 # install delta rpm support
+echo "$(tput setaf 6)-----------------------------------------------------------------------------------"
+echo "$Install Delta RPM"
+echo "$-----------------------------------------------------------------------------------(tput sgr 0)"
 yum install deltarpm -y
 
 #Set the timezone
