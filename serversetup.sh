@@ -74,10 +74,14 @@ echo "--------------------------------------------------------------------------
 docker volume create portainer_data
 docker run -d --restart always --name Portainer -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
 
-
-
 #Install nfs utils
 echo "$(tput setaf 6)-----------------------------------------------------------------------------------"
 echo "Install nfs utils"
 echo "-----------------------------------------------------------------------------------$(tput sgr 0)"
 yum install nfs-utils -y
+
+#Install wget
+echo "$(tput setaf 6)-----------------------------------------------------------------------------------"
+echo "Install wget"
+echo "-----------------------------------------------------------------------------------$(tput sgr 0)"
+yum install wget -y
