@@ -85,3 +85,22 @@ echo "$(tput setaf 6)-----------------------------------------------------------
 echo "Install wget"
 echo "-----------------------------------------------------------------------------------$(tput sgr 0)"
 yum install wget -y
+
+
+#Install watchtower
+echo "$(tput setaf 6)-----------------------------------------------------------------------------------"
+echo "Install watchtower"
+echo "-----------------------------------------------------------------------------------$(tput sgr 0)"
+
+docker run -d \
+  --restart always \
+  --name watchtower \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -e WATCHTOWER_NOTIFICATIONS=email \
+  -e WATCHTOWER_NOTIFICATION_EMAIL_FROM=watchtower@mailserver.com \
+  -e WATCHTOWER_NOTIFICATION_EMAIL_TO=admin@mailserver.com \
+  -e WATCHTOWER_NOTIFICATION_EMAIL_SERVER=mail.mailserver.com \
+  -e WATCHTOWER_NOTIFICATION_EMAIL_SERVER_TLS_SKIP_VERIFY=true \
+  -e WATCHTOWER_NOTIFICATIONS_LEVEL=debug \
+  v2tec/watchtower \
+  --cleanup 
