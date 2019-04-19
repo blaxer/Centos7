@@ -86,7 +86,6 @@ echo "Install wget"
 echo "-----------------------------------------------------------------------------------$(tput sgr 0)"
 yum install wget -y
 
-
 #Install watchtower
 echo "$(tput setaf 6)-----------------------------------------------------------------------------------"
 echo "Install watchtower"
@@ -104,3 +103,9 @@ docker run -d \
   -e WATCHTOWER_NOTIFICATIONS_LEVEL=debug \
   v2tec/watchtower \
   --cleanup 
+  
+#Install yum update
+echo "$(tput setaf 6)-----------------------------------------------------------------------------------"
+echo "Install yum update"
+echo "-----------------------------------------------------------------------------------$(tput sgr 0)"  
+yum update -y
