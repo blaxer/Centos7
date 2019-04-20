@@ -109,3 +109,19 @@ echo "$(tput setaf 6)-----------------------------------------------------------
 echo "Install yum update"
 echo "-----------------------------------------------------------------------------------$(tput sgr 0)"  
 yum update -y
+
+
+#Install glances
+echo "$(tput setaf 6)-----------------------------------------------------------------------------------"
+echo "Install glances"
+echo "-----------------------------------------------------------------------------------$(tput sgr 0)"  
+
+docker run \
+  --name=glances \
+  -d \
+  --restart="always" \
+  -p 61208-61209:61208-61209 \
+  -e GLANCES_OPT="-w" \
+  -v /var/run/docker.sock:/var/run/docker.sock:ro \
+  --pid host \
+  docker.io/nicolargo/glances
